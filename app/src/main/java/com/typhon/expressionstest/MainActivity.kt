@@ -6,7 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.time.LocalDate
+import java.time.LocalTime
 
 class MainActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,14 +16,26 @@ class MainActivity : AppCompatActivity() {
 
 		val myText: TextView = findViewById(R.id.textView)
 
-		val currentYear = LocalDate.now().year
-		val yearOfBirth = 2000
-		val name = "Fortune"
-		val age : Int;
-		age = currentYear - yearOfBirth
+	  val currentTime = LocalTime.now()
+		val currentHour = currentTime.hour
 
-		myText.text = "$name was born in $yearOfBirth and is $age years old, next year he will be " +
-			"${age + 1} years old"
+		val timeFormat : String = if (currentHour < 12) {
+			"am"
+		} else {
+			"pm"
+		}
+
+		val captainAlive : Boolean = true
+		val overTheBridge : Boolean = true
+		val act = if (captainAlive && overTheBridge) {
+			"Spare them"
+		} else if (captainAlive && !overTheBridge || !captainAlive && overTheBridge) {
+			"Shoot them"
+		} else {
+			"Pray to God"
+		}
+
+		myText.text = "Time is: ${currentHour}${timeFormat} \n ${act}"
 
 		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
