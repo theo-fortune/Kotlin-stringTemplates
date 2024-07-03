@@ -1,5 +1,6 @@
 package com.typhon.expressionstest
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -16,26 +17,39 @@ class MainActivity : AppCompatActivity() {
 
 		val myText: TextView = findViewById(R.id.textView)
 
-	  val currentTime = LocalTime.now()
-		val currentHour = currentTime.hour
+		val rating : Int = 5
 
-		val timeFormat : String = if (currentHour < 12) {
-			"am"
-		} else {
-			"pm"
+		when(rating) {
+			1 -> {
+				myText.text = "Hate it! Rating = ${rating} stars"
+				myText.setTextColor((Color.parseColor("#FF0000")))
+
+			}
+			2 -> {
+				myText.text = "Not Good! Rating = ${rating} stars"
+				myText.setTextColor((Color.parseColor("#FFA500")))
+
+			}
+			3 -> {
+				myText.text = "It's Okay! Rating = ${rating} stars"
+				myText.setTextColor((Color.parseColor("#FFDA00")))
+
+			}
+			4 -> {
+				myText.text = "Good! Rating = ${rating} stars"
+				myText.setTextColor((Color.parseColor("#97FA02")))
+
+			}
+			5 -> {
+				myText.text = "Excellent! Rating = ${rating} stars"
+				myText.setTextColor((Color.parseColor("#008000")))
+
+			}
+			else -> {
+				myText.text = "Something missing"
+				myText.setTextColor((Color.parseColor("#FF0000")))
+			}
 		}
-
-		val captainAlive : Boolean = true
-		val overTheBridge : Boolean = true
-		val act = if (captainAlive && overTheBridge) {
-			"Spare them"
-		} else if (captainAlive && !overTheBridge || !captainAlive && overTheBridge) {
-			"Shoot them"
-		} else {
-			"Pray to God"
-		}
-
-		myText.text = "Time is: ${currentHour}${timeFormat} \n ${act}"
 
 		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
