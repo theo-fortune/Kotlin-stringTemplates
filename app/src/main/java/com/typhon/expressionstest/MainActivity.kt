@@ -17,13 +17,14 @@ class MainActivity : AppCompatActivity() {
 
 		var myTextView: TextView = findViewById(R.id.textView)
 
-		var age = 24;
+		var myInt = 18;
 
-		while (age>0) {
-			Log.i("Fortune", "$age")
-			age--
-		}
-
+		do {
+			myInt++;
+			Log.i("Fortune", "$myInt")
+		} while (myInt < 10)
+		// For a do while loop, the code is to be executed once even if the condition is false. It might
+		// not b the perfect type of loop we need, but it's used in specific conditions
 		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
 			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 			v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
