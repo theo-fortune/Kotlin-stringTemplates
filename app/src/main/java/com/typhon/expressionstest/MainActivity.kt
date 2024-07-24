@@ -17,6 +17,14 @@ class MainActivity : AppCompatActivity() {
 		fun printHelloWorld() {
 			Log.i(TAG, "Hello World")
 		}
+
+		fun printSun(a: Int, b: Int) {
+			Log.i("Fortune", "a+b=${a+b}")
+		}
+
+		fun printName(first: String, second: String) {
+			Log.i("Fortune", "Name: $first $second")
+		}
 	}
 	override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 			insets
 		}
 		printHelloWorld();
-
+		printSun(10, 14)
+		val num1: Int = 18;
+		val num2: Int = 20;
+		printSun(num1, num2);
+		printName("Fortune", "Theo")
 	}
 }
