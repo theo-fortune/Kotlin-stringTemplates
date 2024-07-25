@@ -10,8 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-//	private static final String TAG = "Main Activity";
-
 	companion object {
 		private const val TAG = "MainScreen"
 		fun printHelloWorld() {
@@ -19,15 +17,27 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		fun printSun(a: Int, b: Int) {
-			Log.i("Fortune", "a+b=${a+b}")
+			Log.i("Fortune", "a+b=${a + b}")
 		}
 
 		fun printName(first: String, second: String) {
 			Log.i("Fortune", "Name: $first $second")
 		}
-	}
-	override fun onCreate(savedInstanceState: Bundle?) {
 
+//		val answer = getSum(20, 4);
+	}
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		fun getSum(a: Int, b: Int): Int {
+			return a + b;
+		}
+
+		fun fullName(firstName: String, lastName: String): String {
+			return firstName + " " + lastName;
+		}
+
+		Log.i("Fortune", "${getSum(80, 15)}")
+		Log.i("Fortune", fullName("Theo", "Fortune"))
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
 		setContentView(R.layout.activity_main)
