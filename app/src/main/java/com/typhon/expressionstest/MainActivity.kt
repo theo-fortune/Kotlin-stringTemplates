@@ -12,32 +12,28 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
 	companion object {
 		private const val TAG = "MainScreen"
-		fun printHelloWorld() {
-			Log.i(TAG, "Hello World")
-		}
+		fun orderProduct(
+			giftWrap: Boolean = false, product: String, deliveryService: String =
+				"Standard"
+		) {
+			var details: String = "";
+			if (giftWrap) {
+				details += "Gift wrapped"
+			}
 
-		fun printSun(a: Int, b: Int) {
-			Log.i("Fortune", "a+b=${a + b}")
-		}
+			details += product
+			details += "posted by $deliveryService"
+			Log.i("Fortune", details)
 
-		fun printName(first: String, second: String) {
-			Log.i("Fortune", "Name: $first $second")
 		}
-
-//		val answer = getSum(20, 4);
 	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-		fun getSum(a: Int, b: Int): Int {
-			return a + b;
-		}
 
-		fun fullName(firstName: String, lastName: String): String {
-			return firstName + " " + lastName;
-		}
-
-		Log.i("Fortune", "${getSum(80, 15)}")
-		Log.i("Fortune", fullName("Theo", "Fortune"))
+		orderProduct(product = "Computer ")
+		orderProduct(true, product = "Car ")
+		orderProduct(product = "Toy Car ", deliveryService = "Next week")
+		orderProduct(product = "Wooden table ", deliveryService = "FedEx")
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
 		setContentView(R.layout.activity_main)
@@ -46,11 +42,5 @@ class MainActivity : AppCompatActivity() {
 			v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
 			insets
 		}
-		printHelloWorld();
-		printSun(10, 14)
-		val num1: Int = 18;
-		val num2: Int = 20;
-		printSun(num1, num2);
-		printName("Fortune", "Theo")
 	}
 }
